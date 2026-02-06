@@ -152,6 +152,7 @@ export function AnimatedBook({ size = 'md', className }: AnimatedBookProps) {
                 {[...Array(textLines)].map((_, j) => (
                   <div
                     key={j}
+                    suppressHydrationWarning={true}
                     className="bg-amber-900/12 rounded-full"
                     style={{ 
                       height: size === 'sm' ? 1 : 2,
