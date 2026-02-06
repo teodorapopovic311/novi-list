@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    /* Warm, cozy book marketplace palette - darker theme */
+    --background: 25 30% 12%;
+    --foreground: 40 25% 90%;
+    --card: 25 25% 16%;
+    --card-foreground: 40 25% 90%;
+    --popover: 25 25% 18%;
+    --popover-foreground: 40 25% 90%;
+    --primary: 35 70% 50%;
+    --primary-foreground: 25 30% 10%;
+    --secondary: 25 20% 22%;
+    --secondary-foreground: 40 25% 85%;
+    --muted: 25 20% 18%;
+    --muted-foreground: 35 15% 60%;
+    --accent: 35 75% 55%;
+    --accent-foreground: 25 30% 10%;
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 25 20% 25%;
+    --input: 25 20% 20%;
+    --ring: 35 70% 50%;
+    --radius: 0.5rem;
+    
+    /* Chart colors */
+    --chart-1: 35 70% 50%;
+    --chart-2: 25 60% 45%;
+    --chart-3: 40 80% 55%;
+    --chart-4: 20 50% 40%;
+    --chart-5: 30 65% 50%;
+    
+    /* Sidebar */
+    --sidebar-background: 25 30% 10%;
+    --sidebar-foreground: 40 25% 90%;
+    --sidebar-primary: 35 70% 50%;
+    --sidebar-primary-foreground: 25 30% 10%;
+    --sidebar-accent: 25 20% 18%;
+    --sidebar-accent-foreground: 40 25% 90%;
+    --sidebar-border: 25 20% 20%;
+    --sidebar-ring: 35 70% 50%;
+    
+    /* Custom cozy colors */
+    --wood: 25 45% 25%;
+    --wood-light: 30 30% 45%;
+    --candle: 40 95% 55%;
+    --candle-glow: 35 100% 65%;
+    --parchment: 40 35% 85%;
+    --ink: 220 25% 20%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Candle flame animation */
+@keyframes flicker {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scaleY(1) translateX(0);
+  }
+  25% { 
+    opacity: 0.9; 
+    transform: scaleY(1.05) translateX(-1px);
+  }
+  50% { 
+    opacity: 1; 
+    transform: scaleY(0.95) translateX(1px);
+  }
+  75% { 
+    opacity: 0.85; 
+    transform: scaleY(1.02) translateX(-0.5px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(var(--candle-glow) / 0.4), 0 0 40px hsl(var(--candle-glow) / 0.2);
+  }
+  50% { 
+    box-shadow: 0 0 25px hsl(var(--candle-glow) / 0.5), 0 0 50px hsl(var(--candle-glow) / 0.3);
+  }
+}
+
+@keyframes page-flip {
+  0% { transform: rotateY(0deg); }
+  50% { transform: rotateY(-15deg); }
+  100% { transform: rotateY(0deg); }
+}
+
+.animate-flicker {
+  animation: flicker 2s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+.animate-page-flip {
+  animation: page-flip 4s ease-in-out infinite;
+}
+
+/* Wood texture overlay */
+.wood-texture {
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      hsl(var(--wood) / 0.03) 2px,
+      hsl(var(--wood) / 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 50px,
+      hsl(var(--wood) / 0.02) 50px,
+      hsl(var(--wood) / 0.02) 52px
+    );
+}
+
+/* Parchment paper effect */
+.parchment {
+  background: 
+    linear-gradient(135deg, hsl(var(--parchment)) 0%, hsl(40 35% 91%) 100%);
+  box-shadow: inset 0 0 50px hsl(var(--wood) / 0.05);
+}
